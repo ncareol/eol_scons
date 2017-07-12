@@ -27,10 +27,10 @@ Use the first soqt-config found in this list of paths:
     _options.Update(env)
     prefix = getPrefix(env, apply_config = True)
 
-    # As a special case, if QT4DIR is not /usr/lib64/qt4 or /usr/lib/qt4,
+    # As a special case, if QT5DIR is not /usr/lib64/qt5 or /usr/lib/qt5,
     # then remove all elements from CPPPATH and LIBPATH with those paths.
-    # SoQt may have been built against a different Qt4, such as the one
-    # installed in the system, but this tool needs to force the Qt4
+    # SoQt may have been built against a different Qt5, such as the one
+    # installed in the system, but this tool needs to force the Qt5
     # configuration chosen here.
 
     def find_path(paths, p):
@@ -49,15 +49,15 @@ Use the first soqt-config found in this list of paths:
         return n
 
     removed = 0
-    if env.get('QT4DIR') != "/usr/lib64/qt4":
-        removed += remove_path(env['CPPPATH'], "/usr/lib64/qt4")
-        removed += remove_path(env['LIBPATH'], "/usr/lib64/qt4")
-    if env.get('QT4DIR') != "/usr/lib/qt4":
-        removed += remove_path(env['CPPPATH'], "/usr/lib/qt4")
-        removed += remove_path(env['LIBPATH'], "/usr/lib/qt4")
+    if env.get('QT5DIR') != "/usr/lib64/qt5":
+        removed += remove_path(env['CPPPATH'], "/usr/lib64/qt5")
+        removed += remove_path(env['LIBPATH'], "/usr/lib64/qt5")
+    if env.get('QT5DIR') != "/usr/lib/qt5":
+        removed += remove_path(env['CPPPATH'], "/usr/lib/qt5")
+        removed += remove_path(env['LIBPATH'], "/usr/lib/qt5")
     global _removed_already_warned
     if removed > 0 and not _removed_already_warned:
-        print("soqt: removed %d extraneous qt4 paths from soqt-config." % removed)
+        print("soqt: removed %d extraneous qt5 paths from soqt-config." % removed)
         _removed_already_warned = True
 
     if not env.has_key('SOQT_DOXDIR'):

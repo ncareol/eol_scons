@@ -168,7 +168,7 @@ def _macdeployqt(target, source, env):
     
     env['EXENAME']    -- e.g. ric_proxy
     
-    Since macdeployqt requires the bundle to be have the same name as the executable
+    Since macdeployqt requires the bundle to have the same name as the executable
     inside of it, the bundle directory is first renamed, macdeployqt is applied,
     and then the bundle is renamed to the original.
     """
@@ -187,7 +187,7 @@ def _macdeployqt(target, source, env):
     # Run macdeployqt
     # For some reason, I couldn't get Execute(Command)) to work, so
     # fall back to using subprocess.
-    subprocess.check_call([env['MACDEPLOYQT'], tmpbundle,'-verbose=2'], stderr=subprocess.STDOUT, bufsize=1)
+    subprocess.check_call("env['MACDEPLOYQT'] tmpbundle -verbose=2", stderr=subprocess.STDOUT, bufsize=1)
     
     # Move temporary bundle back
     Execute(Move(bundle, tmpbundle))

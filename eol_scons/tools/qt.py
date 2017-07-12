@@ -12,10 +12,10 @@ import os
 # requires Qt, and so this function makes sure the Qt library appears after
 # Qwt, even if the qt tool has already added the Qt library up front.
 #
-# For Qt4, the only module that is enabled by default is QtCore.  Other
-# Qt4 modules need to be explicitly enabled after this package is loaded.  
-# That's done with the EnableQt4Modules() method, like this:
-#    env.EnableQt4Modules(['QtGui', 'QtNetwork'])
+# For Qt5, the only module that is enabled by default is QtCore.  Other
+# Qt5 modules need to be explicitly enabled after this package is loaded.  
+# That's done with the EnableQt5Modules() method, like this:
+#    env.EnableQt5Modules(['QtGui', 'QtNetwork'])
 
 def qt(env, minversion=None, maxversion=None):
   # Qt3:
@@ -40,17 +40,17 @@ def qt(env, minversion=None, maxversion=None):
 
     if minmajor >= 4:
       #
-      # Load the qt4 tool if we haven't yet done so
+      # Load the qt5 tool if we haven't yet done so
       #
-      if not('qt4' in env['TOOLS']):
+      if not('qt5' in env['TOOLS']):
         #
-        # Add 'qt4' to the list of tools
+        # Add 'qt5' to the list of tools
         #
-        env.Tool('qt4')
+        env.Tool('qt5')
         #
         # Enable QtCore by default
         #
-        env.EnableQt4Modules(['QtCore'])
+        env.EnableQt5Modules(['QtCore'])
     else:
       qt3(env)
 

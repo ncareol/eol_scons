@@ -2,7 +2,7 @@
 import sys
 
 def generate(env):
-    env.Require('qt4')
+    env.Require('qt5')
     env.Require('coin')
     
     if sys.platform in ['linux', 'linux2']: 
@@ -19,8 +19,8 @@ def generate(env):
     
         env.AppendUnique(FRAMEWORKS=['Inventor', 'Quarter']+qtframes)
         
-        if 'QT4DIR' in env:
-            qtframeworkdir = env['QT4DIR']+'/Frameworks'
+        if 'QT5DIR' in env:
+            qtframeworkdir = env['QT5DIR']+'/Frameworks'
         else:
             qtframeworkdir = '/usr/local/Frameworks'
             

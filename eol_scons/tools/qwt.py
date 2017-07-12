@@ -1,4 +1,4 @@
-
+e
 import os
 from SCons.Variables import PathVariable
 import platform
@@ -117,10 +117,10 @@ class QwtTool:
 def enable_qwt(env):
     # This configure test for qwt must be delayed, and not done
     # by the generate() function when this qwt tool is loaded.
-    # This is because the qt4 build environment is not fully setup
-    # when qt4 tool is loaded via its generate() function. The
-    # user must call env.EnableQt4Modules(['QtCore',...]) after the
-    # qt4 tool is loaded to setup the Qt build environment.
+    # This is because the qt5 build environment is not fully setup
+    # when qt5 tool is loaded via its generate() function. The
+    # user must call env.EnableQt5Modules(['QtCore',...]) after the
+    # qt5 tool is loaded to setup the Qt build environment.
     # Then call env.EnableQwt(), and this Configure check has
     # a chance of succeeding.
 
